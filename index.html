@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <style>
+        body {
+            margin: auto;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .scanner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+
+        }
+        
+        #log {
+           display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto; 
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Microservice - Logger</h1>
+            <p>Scan the QR to log!</p>
+        </header>
+
+        <div class="scanner">
+            <div id="qr-reader" style="width:500px"></div>
+            <input type="text" name="q" value="" id="myfield" class="form-control input-sm ui-autocomplete-input"
+                size="50" tabindex="1" autocomplete="off">
+            <button id="logButton">Log</button>
+        </div>
+        <div id="log">
+            <h2>Logged Services:</h2>
+            <p id="displayedLog">id - service - code - time</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
