@@ -27,10 +27,21 @@
     document.getElementById("logButton").addEventListener("click", myFunction);
 
 function myFunction() {
+    
+ 
     var data = document.getElementById("myfield").value;
     console.log(data);
+    if(localStorage.getItem(data) != null){
+        //trigger modal prompt
+        console.log("modal goes here");
+    }
+
+    else{
+
+    
+    localStorage.setItem(data, true);
     const para = document.createElement("p");
     para.innerText = data;
     document.getElementById("log").appendChild(para);
-
+    }
 }
