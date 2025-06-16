@@ -15,12 +15,17 @@ docReady(function () {
             ++countResults;
             lastResult = decodedText;
             console.log(`Scan result ${decodedText}`, decodedResult);
-            if (localStorage.getItem(data) != null) {
+            if (localStorage.getItem(data) === null) {
+                document.getElementById("myfield").value = decodedText;
+
+            }
+            else {
                 //trigger modal prompt
                 console.log("modal goes here");
                 showModal(data);
             }
-            document.getElementById("myfield").value = decodedText;
+
+
         }
     }
 
@@ -70,7 +75,7 @@ function showModal(data) {
                 ++countResults;
                 lastResult = decodedText;
                 console.log(`Scan result ${decodedText}`, decodedResult);
-                
+
                 document.getElementById("myfield2").value = decodedText;
             }
         }
