@@ -21,7 +21,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin: auto;
+            
 
         }
 
@@ -39,6 +39,20 @@
             margin: auto;
         }
 
+        .wrapper {
+            display: flex;
+            margin: auto;
+        }
+        .scanControls {
+            display: flex;
+            flex-direction: column;
+            /* max-width: 30px; */
+        }
+
+        #logButton {
+            line-height: 5;
+        }
+
         /* The Modal (background) */
         .modal {
             display: none;
@@ -50,7 +64,7 @@
             left: 0;
             top: 0;
             width: 100%;
-            
+
             /* Full width */
             height: 100%;
             /* Full height */
@@ -97,14 +111,21 @@
             <h1>Middleware - Logger</h1>
             <p>Scan the QR to log!</p>
         </header>
+        <div class="wrapper">
+            <div class="scanner">
+                <div id="qr-reader" style="width:500px"></div>
+                <input type="text" name="q" value="" id="myfield" class="form-control input-sm ui-autocomplete-input"
+                    size="50" tabindex="1" autocomplete="off">
+                <button id="logButton">Log</button>
 
-        <div class="scanner">
-            <div id="qr-reader" style="width:500px"></div>
-            <input type="text" name="q" value="" id="myfield" class="form-control input-sm ui-autocomplete-input"
-                size="50" tabindex="1" autocomplete="off">
-            <button id="logButton">Log</button>
-
-            <button id="openModal">Open Modal</button>
+                
+            </div>
+            <div class="scanControls">
+                <button id="openModal">Open Modal</button>
+                <button id="clearLastScan">Clear Last Scan</button>
+                <button id="clearLastScan">Clear Log</button>
+                <button id="clearLocalStorage">Clear Local Storage</button>
+            </div>
         </div>
         <div id="log">
             <h2>Logged Services:</h2>

@@ -32,7 +32,7 @@ docReady(function () {
                 document.getElementById("myfield").value = decodedText;
                 //console.log("modal goes here");
                 showModal();
-                
+
             }
 
 
@@ -45,6 +45,22 @@ docReady(function () {
 });
 
 document.getElementById("logButton").addEventListener("click", myFunction);
+
+//enter button support
+document.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        if (modalOpen === true) {
+            event.preventDefault();
+            document.getElementById("logButton2").click();
+        }
+        else {
+            event.preventDefault();
+            document.getElementById("logButton").click();
+        }
+    }
+});
+
+
 
 var modal = document.getElementById("myModal");
 // Get the <span> element that closes the modal
