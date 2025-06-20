@@ -39,7 +39,7 @@
             margin: auto;
         }
 
-        .wrapper {
+        #wrapper {
             display: flex;
             margin: auto;
         }
@@ -117,6 +117,13 @@
         .red {
             color: red;
         }
+
+        .bkgGreen {
+            background-color: green;
+        }
+        .bkgWhite {
+            background-color: white;
+        }
     </style>
 </head>
 
@@ -126,7 +133,7 @@
             <h1>Middleware - Logger</h1>
             <p>Scan the QR to log!</p>
         </header>
-        <div class="wrapper">
+        <div id="wrapper">
             <div class="scanner">
                 <div id="qr-reader" style="width:500px"></div>
                 <input type="text" name="q" value="" id="myfield" class="form-control input-sm ui-autocomplete-input"
@@ -153,7 +160,7 @@
     </div>
 
     <div id="myModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" id="modalBkg">
             <span class="close">&times;</span>
             <h2>Scan second QR code:</h2>
             <div class="scanner">

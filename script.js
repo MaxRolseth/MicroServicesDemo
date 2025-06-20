@@ -19,6 +19,7 @@ docReady(function () {
             console.log(`Scan result ${decodedText}`, decodedResult);
             if (localStorage.getItem(decodedText) === null && modalOpen === false) {
                 document.getElementById("myfield").value = decodedText;
+                document.getElementById("wrapper").classList.add("bkgGreen");
 
             }
             else if (modalOpen === true) {
@@ -26,6 +27,8 @@ docReady(function () {
                 let newData = document.getElementById("myfield").value + ": " + decodedText;
                 console.log(newData);
                 document.getElementById("myfield").value = newData;
+                document.getElementById("modalBkg").classList.add("bkgGreen");
+                
 
             }
             else {
@@ -46,9 +49,21 @@ docReady(function () {
     html5QrcodeScanner.render(onScanSuccess);
 });
 
-document.getElementById("logButton").addEventListener("click", logAndClearInput
+document.getElementById("logButton").addEventListener("click", logAndClearInput);
 
-);
+//turn background green on scan?
+var firstField = document.getElementById("myfield");
+firstField.oninput = function () {
+    if(firstField === "")
+    {
+        document.getElementById("wrapper").classList.remove("bkgGreen");
+    }
+    else
+    {
+        document.getElementById("wrapper").classList.add("bkgGreen");
+    }
+};
+
 
 //enter button support
 document.addEventListener("keypress", function (event) {
@@ -185,6 +200,8 @@ function logAndClearInput() {
     document.getElementById("log").appendChild(para);
     document.getElementById("myfield").value = "";
     document.getElementById("myfield2").value = "";
+    document.getElementById("wrapper").classList.remove("bkgGreen");
+    document.getElementById("modalBkg").classList.remove("bkgGreen");
 
 
 }
