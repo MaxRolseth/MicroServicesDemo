@@ -58,6 +58,7 @@ document.getElementById("logButton2").onclick = function () {
     modal.style.display = "none";
     modalOpen = false;
 }
+
 document.getElementById("openModal").onclick = function () {
     showModal();
 }
@@ -74,6 +75,7 @@ window.onclick = function (event) {
 function showModal() {
     modal.style.display = "block";
     modalOpen = true;
+    console.log(modalOpen);
 
     function docReady(fn) {
         if (document.readyState === "complete"
