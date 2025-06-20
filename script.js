@@ -1,3 +1,6 @@
+//made these global, be careful. This is so I can manually rescan the same code twice
+var lastResult, countResults = 0;
+
 function docReady(fn) {
     if (document.readyState === "complete"
         || document.readyState === "interactive") {
@@ -9,7 +12,6 @@ function docReady(fn) {
 let modalOpen = false;
 docReady(function () {
     var resultContainer = document.getElementById('myfield');
-    var lastResult, countResults = 0;
     function onScanSuccess(decodedText, decodedResult) {
         if (decodedText !== lastResult) {
             ++countResults;
@@ -60,7 +62,11 @@ document.addEventListener("keypress", function (event) {
     }
 });
 
-
+document.getElementById("clearLastScan").onclick = function () {
+    //console.log(lastResult);
+    lastResult = "";
+    //console.log(lastResult);
+}
 
 var modal = document.getElementById("myModal");
 // Get the <span> element that closes the modal
@@ -105,7 +111,7 @@ function showModal() {
 
     docReady(function () {
         var resultContainer2 = document.getElementById('myfield2');
-        var lastResult, countResults = 0;
+        //var lastResult, countResults = 0;
         function onScanSuccess(decodedText, decodedResult) {
             if (decodedText !== lastResult) {
                 ++countResults;
