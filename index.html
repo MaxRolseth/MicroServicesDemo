@@ -50,6 +50,7 @@
             left: 0;
             top: 0;
             width: 100%;
+            
             /* Full width */
             height: 100%;
             /* Full height */
@@ -64,12 +65,13 @@
         /* Modal Content/Box */
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
+            margin: 10% auto;
             /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            max-width: 500px;
             /* Could be more or less, depending on screen size */
+            text-align: center;
         }
 
         /* The Close Button */
@@ -104,17 +106,17 @@
         </div>
         <div id="log">
             <h2>Logged Services:</h2>
-            <p id="displayedLog">id - service - code - time</p>
+            <p id="displayedLog"></p>
         </div>
     </div>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
+            <h2>Scan second QR code:</h2>
             <div class="scanner">
                 <div id="qr-reader2" style="width:500px"></div>
-                <input type="text" name="q" value="" id="myfield2" class="form-control input-sm ui-autocomplete-input"
+                <input type="text" name="qr" value="" id="myfield2" class="form-control input-sm ui-autocomplete-input"
                     size="50" tabindex="1" autocomplete="off">
                 <button id="logButton2">Accept</button>
             </div>

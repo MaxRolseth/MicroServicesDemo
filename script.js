@@ -6,7 +6,7 @@ function docReady(fn) {
         document.addEventListener("DOMContentLoaded", fn);
     }
 }
-
+let modalOpen = false;
 docReady(function () {
     var resultContainer = document.getElementById('myfield');
     var lastResult, countResults = 0;
@@ -15,14 +15,24 @@ docReady(function () {
             ++countResults;
             lastResult = decodedText;
             console.log(`Scan result ${decodedText}`, decodedResult);
-            if (localStorage.getItem(data) === null) {
+            if (localStorage.getItem(decodedText) === null && modalOpen === false) {
                 document.getElementById("myfield").value = decodedText;
+
+            }
+            else if (modalOpen === true) {
+                document.getElementById("myfield2").value = decodedText;
+                let newData = document.getElementById("myfield").value + ": " + decodedText;
+                console.log(newData);
+                document.getElementById("myfield").value = newData;
 
             }
             else {
                 //trigger modal prompt
-                console.log("modal goes here");
-                showModal(data);
+                let currentID = decodedText;
+                document.getElementById("myfield").value = decodedText;
+                //console.log("modal goes here");
+                showModal();
+                
             }
 
 
@@ -42,9 +52,11 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
+    modalOpen = false;
 }
 document.getElementById("logButton2").onclick = function () {
     modal.style.display = "none";
+    modalOpen = false;
 }
 
 
@@ -52,11 +64,13 @@ document.getElementById("logButton2").onclick = function () {
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        modalOpen = false;
     }
 }
 
-function showModal(data) {
+function showModal() {
     modal.style.display = "block";
+    modalOpen = true;
 
     function docReady(fn) {
         if (document.readyState === "complete"
@@ -75,18 +89,20 @@ function showModal(data) {
                 ++countResults;
                 lastResult = decodedText;
                 console.log(`Scan result ${decodedText}`, decodedResult);
+                //let newData = data + ":" + decodedText;
+                //console.log(newData);
+                //document.getElementById("myfield").value = newData;
 
-                document.getElementById("myfield2").value = decodedText;
+
             }
         }
-
         var html5QrcodeScanner = new Html5QrcodeScanner(
             "qr-reader2", { fps: 10, qrbox: 250 });
         html5QrcodeScanner.render(onScanSuccess);
     });
-    let originalID = localStorage.getItem(data);
-    document.getElementById("myfield").value = originalID + ": " + decodedText;
-    document.getElementById("logButton2").addEventListener("click", myFunction);
+    document.getElementById("myfield2").value = decodedText;
+
+    //document.getElementById("logButton2").addEventListener("click", myFunction);
 
 }
 
@@ -105,5 +121,8 @@ function myFunction() {
     const para = document.createElement("p");
     para.innerText = data;
     document.getElementById("log").appendChild(para);
+    document.getElementById("myfield").value = "";
+    document.getElementById("myfield2").value = "";
+
 
 }
