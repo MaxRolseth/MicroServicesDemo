@@ -90,26 +90,26 @@ document.getElementById("openModal").onclick = function () {
 
 document.getElementById("clearLog").onclick = function () {
     let text = "Are you sure you want to clear the log?";
-  if (confirm(text) == true) {
-   const elements = document.getElementsByClassName("logged");
-    while (elements.length > 0) {
-        elements[0].parentNode.removeChild(elements[0]);
+    if (confirm(text) == true) {
+        const elements = document.getElementsByClassName("logged");
+        while (elements.length > 0) {
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+    } else {
+
     }
-  } else {
-    
-  }
-    
+
 
 }
 
 document.getElementById("clearLocalStorage").onclick = function () {
-   
-  let text = "Are you sure you want to clear the log history?";
-  if (confirm(text) == true) {
-    localStorage.clear();
-  } else {
-    
-  }
+
+    let text = "Are you sure you want to clear the log history?";
+    if (confirm(text) == true) {
+        localStorage.clear();
+    } else {
+
+    }
 
 }
 
@@ -137,7 +137,7 @@ function showModal() {
 
     docReady(function () {
         var resultContainer2 = document.getElementById('myfield2');
-        //var lastResult, countResults = 0;
+        var lastResult, countResults = 0;
         function onScanSuccess(decodedText, decodedResult) {
             if (decodedText !== lastResult) {
                 ++countResults;
@@ -162,8 +162,7 @@ function showModal() {
 }
 
 
-function logAndClearInput
-    () {
+function logAndClearInput() {
 
 
     var data = document.getElementById("myfield").value;
@@ -175,6 +174,14 @@ function logAndClearInput
     const para = document.createElement("p");
     para.classList.add("logged");
     para.innerText = data;
+    if (para.innerText.includes("Succeeded")) {
+        para.classList.add("green");
+
+    }
+    else if (para.innerText.includes("Failed")) {
+        para.classList.add("red");
+    }
+
     document.getElementById("log").appendChild(para);
     document.getElementById("myfield").value = "";
     document.getElementById("myfield2").value = "";
