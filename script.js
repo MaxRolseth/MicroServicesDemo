@@ -89,10 +89,16 @@ document.getElementById("openModal").onclick = function () {
 }
 
 document.getElementById("clearLog").onclick = function () {
-    const elements = document.getElementsByClassName("logged");
+    let text = "Are you sure you want to clear the log?";
+  if (confirm(text) == true) {
+   const elements = document.getElementsByClassName("logged");
     while (elements.length > 0) {
         elements[0].parentNode.removeChild(elements[0]);
     }
+  } else {
+    
+  }
+    
 
 }
 
@@ -104,9 +110,7 @@ document.getElementById("clearLocalStorage").onclick = function () {
   } else {
     
   }
-  //document.getElementById("demo").innerHTML = text;
 
-    
 }
 
 // When the user clicks anywhere outside of the modal, close it
