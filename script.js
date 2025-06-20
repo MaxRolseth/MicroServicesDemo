@@ -61,6 +61,7 @@ document.getElementById("logButton2").onclick = function () {
 
 document.getElementById("openModal").onclick = function () {
     showModal();
+    console.log(modalOpen);
 }
 
 
