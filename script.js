@@ -58,6 +58,9 @@ document.getElementById("logButton2").onclick = function () {
     modal.style.display = "none";
     modalOpen = false;
 }
+document.getElementById("openModal").onclick = function () {
+    showModal();
+}
 
 
 // When the user clicks anywhere outside of the modal, close it
