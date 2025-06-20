@@ -46,7 +46,9 @@ docReady(function () {
     html5QrcodeScanner.render(onScanSuccess);
 });
 
-document.getElementById("logButton").addEventListener("click", myFunction);
+document.getElementById("logButton").addEventListener("click", logAndClearInput
+
+);
 
 //enter button support
 document.addEventListener("keypress", function (event) {
@@ -86,6 +88,26 @@ document.getElementById("openModal").onclick = function () {
     console.log(modalOpen);
 }
 
+document.getElementById("clearLog").onclick = function () {
+    const elements = document.getElementsByClassName("logged");
+    while (elements.length > 0) {
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+
+}
+
+document.getElementById("clearLocalStorage").onclick = function () {
+   
+  let text = "Are you sure you want to clear the log history?";
+  if (confirm(text) == true) {
+    localStorage.clear();
+  } else {
+    
+  }
+  //document.getElementById("demo").innerHTML = text;
+
+    
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -130,12 +152,14 @@ function showModal() {
     });
     document.getElementById("myfield2").value = decodedText;
 
-    //document.getElementById("logButton2").addEventListener("click", myFunction);
+    //document.getElementById("logButton2").addEventListener("click", logAndClearInput
+    // );
 
 }
 
 
-function myFunction() {
+function logAndClearInput
+    () {
 
 
     var data = document.getElementById("myfield").value;
@@ -143,10 +167,9 @@ function myFunction() {
 
 
 
-
-
     localStorage.setItem(data, true);
     const para = document.createElement("p");
+    para.classList.add("logged");
     para.innerText = data;
     document.getElementById("log").appendChild(para);
     document.getElementById("myfield").value = "";

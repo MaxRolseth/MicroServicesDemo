@@ -21,7 +21,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            
+
 
         }
 
@@ -43,10 +43,18 @@
             display: flex;
             margin: auto;
         }
+
         .scanControls {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             /* max-width: 30px; */
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            
         }
 
         #logButton {
@@ -102,6 +110,8 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        .logged {}
     </style>
 </head>
 
@@ -118,18 +128,22 @@
                     size="50" tabindex="1" autocomplete="off">
                 <button id="logButton">Log</button>
 
-                
+
             </div>
             <div class="scanControls">
-                <button id="openModal">Open Modal</button>
-                <button id="clearLastScan">Clear Last Scan</button>
-                <button id="clearLastScan">Clear Log</button>
-                <button id="clearLocalStorage">Clear Local Storage</button>
+                <div class = "controls">
+                    <button id="openModal">Open Modal</button>
+                    <button id="clearLastScan">Clear Last Scan</button>
+                </div>
+                <div class = "controls">
+                    <button id="clearLog">Clear Log</button>
+                    <button id="clearLocalStorage">Clear Local Storage</button>
+                </div>
             </div>
         </div>
         <div id="log">
             <h2>Logged Services:</h2>
-            <p id="displayedLog"></p>
+            <!-- <p id="displayedLog"></p> -->
         </div>
     </div>
 
